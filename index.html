@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lake Victoria Conservation Project</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header>
         <h1>Welcome to the Lake Victoria Conservation Project</h1>
+        <p>Our mission is to preserve the lake's ecosystem and biodiversity.</p>
     </header>
 
     <nav>
@@ -16,18 +20,73 @@
     </nav>
 
     <main>
-        <h2>Our Mission</h2>
-        <p>The mission of the Lake Victoria Conservation Project is to protect and restore the ecological health of Lake Victoria and its surrounding ecosystems.</p>
+        <h2>Latest Initiatives</h2>
+        <p>We are currently working on projects to reduce plastic pollution and protect local fish species. Join us!</p>
         
-        <h2>Latest Updates</h2>
-        <ul>
-            <li>New water quality report published (October 2025)</li>
-            <li>Volunteer clean-up drive successful in Mwanza (September 2025)</li>
-        </ul>
+        <section>
+            <h3>Get Involved</h3>
+            <p>Learn how you can volunteer or donate to support our cause.</p>
+        </section>
+
+        <!-- New Contact Section -->
+        <section id="contact-section">
+            <h2>Contact Us</h2>
+            <p>You can reach us via phone or find our location.</p>
+            <ul>
+                <li>
+                    <strong>Phone:</strong> 
+                    <!-- Makes the number clickable on mobile devices -->
+                    <a href="tel:+255747637734">+255 747 637 734</a>
+                </li>
+            </ul>
+            
+            <button id="get-location-btn">Use Current Position</button>
+            <p id="location-info">Your location will appear here after you grant permission.</p>
+        </section>
+
     </main>
 
     <footer>
-        <p>&copy; 2025 Lake Victoria Conservation Project</p>
+        <p>&copy; 2025 Lake Victoria Conservation Project. All rights reserved.</p>
     </footer>
+
+    <!-- JavaScript for Geolocation -->
+    <script>
+        const locationButton = document.getElementById('get-location-btn');
+        const locationInfo = document.getElementById('location-info');
+
+        locationButton.addEventListener('click', () => {
+            if (navigator.geolocation) {
+                // Request the user's current position
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                locationInfo.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        });
+
+        function showPosition(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            locationInfo.innerHTML = `Latitude: ${latitude}<br>Longitude: ${longitude}`;
+        }
+
+        function showError(error) {
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    locationInfo.innerHTML = "User denied the request for Geolocation."
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    locationInfo.innerHTML = "Location information is unavailable."
+                    break;
+                case error.TIMEOUT:
+                    locationInfo.innerHTML = "The request to get user location timed out."
+                    break;
+                case error.UNKNOWN_ERROR:
+                    locationInfo.innerHTML = "An unknown error occurred."
+                    break;
+            }
+        }
+    </script>
+
 </body>
 </html>
