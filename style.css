@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
@@ -31,15 +31,40 @@ main {
     padding: 2rem;
     max-width: 800px;
     margin: auto;
-    background-color: white;
+    background: white;
 }
 
 footer {
     text-align: center;
     padding: 1rem 0;
-    background-color: #001f3f;
+    background-color: #001219;
     color: white;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    /* Removed 'position: fixed' to prevent overlap with content */
+    margin-top: 2rem; 
+}
+
+/* New Styles for the contact section and button */
+#contact-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#get-location-btn {
+    background-color: #0a9396;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+#get-location-btn:hover {
+    background-color: #005f73;
+}
+
+#location-info {
+    margin-top: 10px;
+    font-style: italic;
+    color: #555;
 }
